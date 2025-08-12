@@ -1,9 +1,7 @@
 // Task 1: Find all numbers
 string1 = "There are 12 eggs, 3 apples, and 100 strawberries"
-function getNumbers(text){
-    return /\d/
-}
-console.log(getNumbers(string1))
+let numbers = string1.match(/\d+/g)
+console.log(numbers)
 
 // Task 2: Validate a password
 
