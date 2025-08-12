@@ -10,5 +10,11 @@ const files = [
   'family-pic.jpg',
 ];
 
-// Task: Create a function that takes an array of the filenames. Use the filter() array method. 
-// The filter condition should use a regular expression to identify image files. Return a new array containing only the image filenames.
+// Task 1: Create a function that takes an array of the filenames. 
+// Use the filter() array method. 
+// The filter condition should use a regular expression to identify image files. 
+// Return a new array containing only the image filenames.
+
+function filterImages(fileArray){
+  
+}
