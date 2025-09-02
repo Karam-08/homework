@@ -271,12 +271,36 @@ console.log("================================Border=============================
 // Part 3: Combined Challenges
 
 // Task 1: Get all Wizard players whose name starts with “K” and have player_intelligence > 15.
+wizardsK = players.filter((player) => player.player_class === "Wizard" && /^K/i.test(player.player_name) && player.player_intelligence > 15)
+.map((player) => player.player_name)
+console.log(wizardsK)
 
+console.log("================================Border================================")
 
 // Task 2: Find if there’s any Barbarian with both strength and dexterity over 15.
+strong_and_fast = players.some((player) => player.player_class === "Barbarian" && player.player_strength > 15 && player.player_dexterity > 15)
+console.log(strong_and_fast)
 
+console.log("================================Border================================")
 
 // Task 3: Count how many players have skills that are exactly one word long
+one_word_skill = players.filter((player) => /^\w+$/.test(player.player_skills)).length
+console.log(one_word_skill)
 
+console.log("================================Border================================")
 
 // Task 4: Get all Rogue players sorted alphabetically by last name
+rogues_sorted = players.filter((player) => player.player_class === "Rogue")
+.sort((a, b) =>{
+    lastA = a.player_name.split(" ").slice(-1)[0]
+    lastB = b.player_name.split(" ").slice(-1)[0]
+    if(lastA < lastB){
+        return -1;
+    }else if(lastA > lastB){
+        return 1;
+    }else{
+        return 0;
+    }
+})
+.map(player => player.player_name)
+console.log(rogues_sorted)

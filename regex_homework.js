@@ -23,6 +23,7 @@ function isValidPassword(password){
     if(!/[a-z]/.test(password)){
         return false;
     }
+    
     if(!/[0-9]/.test(password)){
         return false;
     }else{
