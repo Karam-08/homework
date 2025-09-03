@@ -1,6 +1,6 @@
 // Task 1: Creating your first promise
 
-doHomework = newPromise((resolve, reject) =>{
+doHomework = new Promise((resolve, reject) =>{
     setTimeout(() =>{
         didHomework = true
         if(didHomework){
@@ -13,7 +13,7 @@ doHomework = newPromise((resolve, reject) =>{
 
 doHomework
     .then(result =>{
-        console.log(result)
+        console.log(result);
     })
     .catch(error =>{
         console.log(error);
@@ -22,13 +22,12 @@ doHomework
 /////////////////////////////////////////////////////
 
 
-// Task 2: Promise Chaining
+// Task 2: Promise Chaining (UNFINISHED)
 
 function studySubject(subject){
-    return newPromise((resolve, reject) =>{
+    return new Promise((resolve, reject) =>{
         setTimeout(() =>{
-            subject = "Math"
-            if(subject === "Math"){
+            if(subject == "Math"){
                 resolve("Studied Math!")
             }else{
                 reject("I don't want to study that!")
@@ -36,3 +35,19 @@ function studySubject(subject){
         })
     })
 }
+
+studySubject()
+    .then(result =>{
+        console.log(result);
+    })
+    .catch(error =>{
+        console.log(error);
+    })
+    .finally(() =>{
+        console.log("Now I am ready for the test!");
+    })
+
+
+/////////////////////////////////////////////////////////
+
+// Task 3: Handling Multiple steps
