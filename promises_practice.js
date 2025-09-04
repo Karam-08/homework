@@ -22,7 +22,7 @@ doHomework
 /////////////////////////////////////////////////////
 
 
-// Task 2: Promise Chaining (UNFINISHED)
+// Task 2: Promise Chaining
 
 function studySubject(subject){
     return new Promise((resolve, reject) =>{
