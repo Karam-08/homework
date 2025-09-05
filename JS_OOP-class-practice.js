@@ -115,7 +115,7 @@ class holidayCuisine extends Cuisine{
     }
 }
 
-const pumpkinPie = new holidayCuisine("American", "America", "Pot Roast", "Christmas") // I heard about Pot Roast before
+const potRoast = new holidayCuisine("American", "America", "Pot Roast", "Christmas") // I heard about Pot Roast before
 
-pumpkinPie.describe()
-pumpkinPie.holidayTradition()
+potRoast.describe()
+potRoast.holidayTradition()
