@@ -1,58 +1,81 @@
 const EventEmitter = require('events')
 
 class Vehicle extends EventEmitter{
-    constructor(make, brand, year){
+    constructor(type, year){
         super()
-        this.make = make
-        this.brand = brand
+        this.type = type
         this.year = year
     }
     info(){
-        console.log(`This ${this.make} ${this.brand} was made in ${this.year}.`)
+        console.log(`This is a ${this.type} from ${this.year}.`)
     }
-    parked(){
-        console.log(`The ${this.make} ${this.brand} is parked.`)
-    }
-    engineStart(){
-        console.log(`The ${this.make} ${this.brand} is starting up the Engine.`)
-    }
-    drive(){
-        console.log(`The ${this.make} ${this.brand} is in Drive.`)
-    }
-    reverse(){
-        console.log(`The ${this.make} ${this.brand} is in Reverse.`)
-    }
-    neutral(){
-        console.log(`The ${this.make} ${this.brand} is in Neutral.`)
+    go(){
+        console.log(`This ${this.type} is accelerating.`)
     }
 }
+
+train = new Vehicle("Train", 1885)
+train.info()
+train.go()
 
 class Car extends Vehicle{
-    constructor(make, brand, year, honk, artist){
-        super(make, brand, year)
-        this.honk = honk
-        this.artist = artist
-    }
-    honk(){
-        console.log(`The ${this.make} ${this.brand} is honking at you! Brake check him when you get the chance.`)
-    }
-    music(){
-        console.log(`This ${this.make} ${this.brand} is blasting ${this.artist} on full volume!`)
-    }
-}
-
-class Motorcycle extends Vehicle{
-    constructor(make, brand, year, category){
-        super(make, brand, year)
-        this.category = category
+    constructor(make, brand, year){
+        super("Car", year) // "Car" replaces type
+        this.brand = brand
+        this.make = make
     }
     info(){
-        console.log(`This ${this.make} from ${this.brand} which was made in ${this.year} is meant for ${this.category}.`)
+        console.log(`This is a ${this.make} ${this.brand} from ${this.year}.`)
     }
-    revEngine(){
-        console.log(`This ${this.make} ${this.brand} is revving its engine.`)
+    honk(){
+        console.log(`Beep Beep! The ${this.make} ${this.brand} is honking.`)
     }
 }
 
-motor = new Motorcycle("Africa Twin", "Honda", "2020", "Touring")
-motor.info()
+corolla = new Car("Toyota", "Corolla", 2022)
+corolla.info()
+corolla.honk()
+
+class Plane extends Vehicle{
+    constructor(brand, make, type, year, maxKPH, fast){
+        super(type, year)
+        this.brand = brand
+        this.make = make
+        this.maxKPH = maxKPH
+        this.fast = fast
+    }
+    info(){
+        console.log(`This is the ${this.brand} made by ${this.make}. It is a ${this.type} from ${this.year}.`)
+    }
+    go(){
+        console.log(`She can go up to ${this.maxKPH} KPH.`)
+    }
+    isFast(){
+        if(this.maxKPH > 400){
+            console.log(`This ${this.type} is really fast!`)
+        }else{
+            console.log(`This ${this.type} is not that fast.`)
+        }
+    }
+}
+
+superSabre = new Plane("F-100D Super Sabre", "North American Aviation", "Jet", 1956, 2325)
+superSabre.info()
+superSabre.go()
+superSabre.isFast()
+console.log("----------------") // Seperator
+
+vehicles = [train, corolla, superSabre]
+
+vehicles.forEach(vehicle => {
+    vehicle.info()
+    vehicle.go()
+
+    if('honk' in vehicle){
+        vehicle.honk()
+    }
+
+    if('isFast' in vehicle){
+        vehicle.isFast()
+    }
+});
