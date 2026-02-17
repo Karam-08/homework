@@ -1000,17 +1000,29 @@ input = `
 34359   84179
 45592   15347`
 
-const inputArray = input.trim().split('\n').map(line => line.split(' '))
+const inputArray = input.trim().split('\n').map(line => line.trim().split(/\s+/).map(Number))
 
 const listLeft = []
 const listRight = []
 
 for(var i = 0; i < inputArray.length; i++){
-    if(i % 2 === 0){
-        listRight.push(inputArray[i])
-    }else{
-        listLeft.push(inputArray[i])
+    for(var j = 0; j < inputArray[i].length; j++){
+        if(j === 0){
+            listLeft.push(Number(inputArray[i][j]))
+        }
+        else if(j === 1){
+            listRight.push(Number(inputArray[i][j]))
+        }
     }
 }
 
-console.log(listLeft)
+listLeft.sort((a, b) => a - b)
+listRight.sort((a, b) => a - b)
+
+let totalDistance = 0
+
+for(var i = 0; i < listLeft.length; i++){
+    totalDistance += Math.abs(listLeft[i] - listRight[i])
+}
+
+console.log(totalDistance)
