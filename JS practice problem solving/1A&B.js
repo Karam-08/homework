@@ -1000,6 +1000,8 @@ input = `
 34359   84179
 45592   15347`
 
+// 1A:
+
 const inputArray = input.trim().split('\n').map(line => line.trim().split(/\s+/).map(Number))
 
 const listLeft = []
@@ -1015,6 +1017,23 @@ for(var i = 0; i < inputArray.length; i++){
         }
     }
 }
+
+listLeft.sort((a, b) => a - b)
+listRight.sort((a, b) => a - b)
+
+let totalDistance = 0
+
+for(var i = 0; i < listLeft.length; i++){
+    totalDistance += Math.abs(listLeft[i] - listRight[i])
+}
+
+console.log(totalDistance)
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// 1B:
 
 // Create frequency map for right list
 const rightFrequency = listRight.reduce((count, num) =>{

@@ -1000,3 +1000,33 @@ input = `
 41 38 37 35 34 33 30
 54 57 59 61 64 65 67`
 
+const lines = input.trim().split('\n') // Splits the input into lines
+let safeCount = 0 // Safe line counter
+
+for(var line of lines){ // For each line in the input
+    const numbers = line.split(' ').map(Number) // Split the line into numbers and converts them to integers
+
+    let isSafe = true; // Violation flag
+    let isIncreasing = null; // Tracks if it's increasing or decreasing
+
+    for(var i = 0; i < numbers.length - 1; i++){ // For each pair of numbers
+        const diff = numbers[i + 1] - numbers[i]; // Calculate the difference in betwen
+        const absoluteDiff = Math.abs(diff); // Gets absolute value (this is for negative differences)
+
+        if(absoluteDiff < 1 || absoluteDiff > 3){ // If the difference is greater than 3 or less than one
+            isSafe = false; // It violates the rule
+            break; // No need to check further
+        }
+
+        if(isIncreasing === null){ // If we don't know if it's increasing or decreasing
+            isIncreasing = diff > 0; // Set the direction based on the first difference
+        }else if((diff > 0) !== isIncreasing){ // And if the direction changes
+            isSafe = false; // It violates the rule
+            break; // No need to check further
+        }
+    }
+
+    if(isSafe) safeCount++; // Adds to the count if the line is safe
+}
+
+console.log(safeCount)
