@@ -1011,15 +1011,13 @@ function isSafeLine(numbers){
         const absoluteDiff = Math.abs(diff); // Calculate the absolute difference
 
         if(absoluteDiff < 1 || absoluteDiff > 3){ // If the difference is greater than 3 or less than 1
-            isSafe = false; // It violates the rules
-            break; // No need to check further
+            return false; // It violates the rules
         }
 
         if(isIncreasing === null){ // If we don't know if it's increasing or decreasing
             isIncreasing = diff > 0; // Set the direction based on the first difference
         }else if((diff > 0) !== isIncreasing){
-            isSafe = false; // If the direction changes, it's not safe
-            break; // No need to check further
+            return false; // If the direction changes, it's not safe
         }
     }
 
@@ -1042,4 +1040,4 @@ for(var line of lines){ // For each line in the input
     }
 }
 
-console.log(safeCount) // Output the total count of safe lines
+console.log(safeCount)
