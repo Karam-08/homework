@@ -13,14 +13,14 @@ const pattern = /mul\((\d{1,3}),(\d{1,3})\)/g;
 
 let total = 0
 
-for(const line of lines){
-    const matches = line.match(pattern)
-    if(matches){
-        for(const match of matches){
-            const numbers = match.match(/\d{1,3}/g).map(Number)
-            total += numbers[0] * numbers[1]
+for(const line of lines){ // For each line
+    const matches = line.match(pattern) // Find all matches of the pattern
+    if(matches){ // If it matches
+        for(const match of matches){ // For each match
+            const numbers = match.match(/\d{1,3}/g).map(Number) // Extract the numbers and convert them to integers
+            total += numbers[0] * numbers[1] // Multiply the two numbers and add to the total
         }
     }
 }
 
-console.log(total)
+console.log(total) // Output the total
